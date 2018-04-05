@@ -1,0 +1,47 @@
+extends ../layouts/course-layout
+
+//- INCLUDES
+include ../mixins/event-application
+include ../mixins/course-feature
+
+block content
+	section
+		.contain.row.no-padding-top
+			.card-event__application.application.col-sm
+				.application--overlay
+					h2 匠人活动
+					table
+						tr
+							th
+								h5.white 内容
+							td
+								h5.white=curMeetups.name
+						tr
+							th
+								h5.white 地点
+							td
+								h5.white=curMeetups.place
+						tr
+							th
+								h5.white 费用
+							td
+								h5.white=curMeetups.price
+						tr
+							th
+								h5.white 时间
+							td
+								h5.white=curMeetups._.startDate.format('dddd DD MMMM YYYY')
+								h5.white=curMeetups._.startDate.format('h:mm a') + ' - ' +curMeetups._.endDate.format('h:mm a')
+						tr
+							th
+								h5.white 介绍
+							td
+								h6.white=utils.htmlToText(curMeetups.description)
+
+
+
+
+			.card-course__content.hero.col-sm
+				.card-course__content--header
+					p 报名表
+					+event-application
